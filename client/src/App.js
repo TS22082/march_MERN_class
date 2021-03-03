@@ -1,6 +1,11 @@
 import "./App.css";
 import axios from "axios";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useEffect } from "react";
+import WelcomePage from "./pages/WelcomePage";
+import HomePage from "./pages/HomePage";
+import AdminPage from "./pages/AdminPage";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   const getAllBlogs = async () => {
@@ -12,7 +17,14 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <h1>Hello world</h1>
+      <Router>
+        <Switch>
+          <Route path="/admin" component={AdminPage} />
+          <Route path="/home" component={HomePage} />
+          <Route exact path="/" component={WelcomePage} />
+          <Route path="/" component={ErrorPage} />
+        </Switch>
+      </Router>
     </div>
   );
 }

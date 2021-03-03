@@ -34,4 +34,16 @@ module.exports = {
       res.send(err);
     }
   },
+
+  deleteOne: async (req, res) => {
+    try {
+      res.json(await Blog.findByIdAndDelete(req.params.id));
+    } catch (err) {
+      res.send(err);
+    }
+  },
+
+  updateOne: async (req, res) => {
+    res.json("success");
+  },
 };
